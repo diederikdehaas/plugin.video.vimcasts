@@ -13,6 +13,7 @@ import json
 
 from xbmcswift2 import Plugin
 
+import html
 from html.parser import HTMLParser
 from urllib.request import urlopen
 
@@ -44,7 +45,10 @@ def unescape_html(inp):
     >>> unescape_html('apples &amp; oranges')
     apples & oranges
     '''
-    return _parser.unescape(inp)
+    try:
+        return html.unescape(inp)
+    except:
+        return _parser.unescape(inp)
 
 
 def clean(inp):
